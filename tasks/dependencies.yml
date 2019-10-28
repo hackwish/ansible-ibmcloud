@@ -1,0 +1,12 @@
+---
+    - name: Install dependencies packages
+      apt: 
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - git
+          - curl
+        state: present
+      register: deps
+      ignore_errors: true
+      when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu" or ansible_distribution == 'Linux Mint'

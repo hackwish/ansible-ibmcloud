@@ -1,0 +1,10 @@
+---
+
+- apt_key:
+    url: https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key
+    state: present
+       
+- apt_repository:
+      repo: 'deb https://packages.cloudfoundry.org/debian stable main'
+      state : present
+  when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu" or ansible_distribution == 'Linux Mint'

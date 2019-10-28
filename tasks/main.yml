@@ -1,0 +1,11 @@
+---
+# tasks file for ansible-ibmcloud
+
+- include: dependencies.yml
+  tags: dependencies
+
+- include: install.yml
+  tags: install
+
+- include: plugins.yml
+  tags: plugins
