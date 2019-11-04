@@ -1,6 +1,6 @@
 ---
 - name : Install Plugins
-  shell: "ibmcloud plugin install -f -r 'Bluemix' {{ items }}"
+  shell: "ibmcloud plugin install -f -r 'Bluemix' {{ item }}"
   with_items:
     - cloud-object-storage
     - container-registry
