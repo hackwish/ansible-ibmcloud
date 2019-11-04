@@ -1,7 +1,7 @@
 ---
 - name : Install IBM Cloud CLI
   shell: "sh <(curl -fsSL https://clis.ng.bluemix.net/install/linux)"
-  register: ibmcloud-cli
+  # register: ibmcloud-cli
   when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu" or ansible_distribution == 'Linux Mint'
 
 - name: Install CF CLI
@@ -11,6 +11,6 @@
     packages:
       - cf-cli
     state: present
-  register: cf-cli
+  # register: cf-cli
   ignore_errors: true
   when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu" or ansible_distribution == 'Linux Mint'
