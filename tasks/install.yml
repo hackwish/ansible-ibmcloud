@@ -1,8 +1,32 @@
 ---
-- name : Install IBM Cloud CLI
-  shell: "sh <(curl -fsSL https://clis.ng.bluemix.net/install/linux)"
-  # register: ibmcloud-cli
-  when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu" or ansible_distribution == 'Linux Mint'
+# - name : Install IBM Cloud CLI
+#   shell: "sh <(curl -fsSL https://clis.ng.bluemix.net/install/linux)"
+#   # register: ibmcloud-cli
+#   when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu" or ansible_distribution == 'Linux Mint'
+
+- name: Create ibmcloud directory
+  file: path=/opt/ibmcloud state=directory mode="a+rw"
+
+- name: Get ibmcloud
+  get_url:
+    url: https://clis.cloud.ibm.com/download/bluemix-cli/latest/linux64
+    dest: "/opt/ibmcloud/IBM_Cloud_ibmcloud.tar.gz"
+    mode: 0755
+
+- name: Verify ibmcloud exists
+  stat: path=/opt/ibmcloud/IBM_Cloud_ibmcloud.tar.gz
+  register: ibmcloud_stat
+
+- name: Unarchive ibmcloud
+  unarchive:
+    src: /opt/ibmcloud/IBM_Cloud_ibmcloud.tar.gz
+    dest: /opt/ibmcloud/Bluemix_CLI/
+    remote_src: yes
+
+- name : Install ibmcloud
+  shell: "/opt/ibmcloud/Bluemix_CLI/install_bluemix_cli"
+  #register: install_ibmcloud
+
 
 - name: Install CF CLI
   apt: 
