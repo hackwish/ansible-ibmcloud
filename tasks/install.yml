@@ -14,19 +14,18 @@
     mode: 0755
 
 - name: Verify ibmcloud exists
-  stat: path=/opt/ibmcloud/IBM_Cloud_ibmcloud.tar.gz
+  stat: path=/opt/ibmcloud/Bluemix_CLI/install_bluemix_cli
   register: ibmcloud_stat
 
 - name: Unarchive ibmcloud
   unarchive:
     src: /opt/ibmcloud/IBM_Cloud_ibmcloud.tar.gz
-    dest: /opt/ibmcloud/Bluemix_CLI/
+    dest: /opt/ibmcloud/
     remote_src: yes
 
 - name : Install ibmcloud
   shell: "/opt/ibmcloud/Bluemix_CLI/install_bluemix_cli"
   #register: install_ibmcloud
-
 
 - name: Install CF CLI
   apt: 
