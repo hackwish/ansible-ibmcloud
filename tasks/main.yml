@@ -1,6 +1,9 @@
 ---
 # tasks file for ansible-ibmcloud
 
+- include: repositories.yml
+  tags: repositories
+
 - include: dependencies.yml
   tags: dependencies
 
