@@ -6,7 +6,7 @@
     - container-registry
     - container-service
     - dev
-    - logging-cli
-    #- doi/doi
+    # - logging-cli
+    # - doi/doi
   register: cli
   when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu" or ansible_distribution == 'Linux Mint'
