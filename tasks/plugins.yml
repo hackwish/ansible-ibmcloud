@@ -6,6 +6,7 @@
     - container-registry
     - container-service
     - dev
+    - kubernetes-service
     # - logging-cli
     # - doi/doi
   register: cli
